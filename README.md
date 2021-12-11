@@ -1,6 +1,9 @@
 # docker_homework
 # 1 Task
+Build the image
 ```docker build -t 'frontend:epam' -f docker-frontend frontend```
+Run a container
+```docker run --rm -it --name frontend frontend:epam```
 # 2 Лекция
 Написать Dockerfile для backend который располагается в директории /lib_catalog(для сборки контейнера необходимо использовать файл /lib_catalog/requirements.txt), для работы backend необходим postgresql, т.е. необходимо собрать 2 контейнера:
 1. backend
