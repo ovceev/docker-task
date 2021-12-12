@@ -1,0 +1,36 @@
+version: "3.3"
+services:
+
+  database:
+    container_name: database
+    image: postgres:14.0
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: postgres
+      POSTGRES_DB: django
+    ports:
+      - 5432:5432
+    networks:
+      - backend
+
+  backend:
+    container_name: backend
+    build: ./lib_catalog
+    restart: always
+    ports: 
+      - 8000:8000
+    depends_on:
+      - database
+    networks:
+      - backend
+
+  frontend:
+    container_name: frontend
+    restart: always
+    build: ./frontend
+    ports:
+      - 8080:80
+
+networks:
+  backend:
